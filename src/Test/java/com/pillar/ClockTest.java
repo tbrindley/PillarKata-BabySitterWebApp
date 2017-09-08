@@ -1,6 +1,9 @@
 package com.pillar;
 
+import com.pillar.ratecalculator.RateCalculator;
 import org.junit.Test;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import static org.junit.Assert.assertEquals;
 
@@ -9,14 +12,15 @@ import static org.junit.Assert.assertEquals;
  */
 public class ClockTest {
     @Test
-    public void convertStringtoTimeStamp() throws Exception {
+    public void timeStampCreationTest() throws Exception {
 
-        //import object
+        RateCalculator testRate = new RateCalculator(); //Create test instance for rateCalculator object
+        Date newDate = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 
-
-        //Test
-        String expected = "1";
-        String actual = "";
-        assertEquals("Failed ClockTest!", expected, actual);
+        //convert dates to Strings to remove seconds from Date
+        String expected = dateFormat.format(newDate);
+        String actual = dateFormat.format(testRate.convertToDate("Thu Sep 07 00:00:00 EDT 2017"));
+        assertEquals("Failed, Timestamps don't match!", expected, actual);
     }
 }
