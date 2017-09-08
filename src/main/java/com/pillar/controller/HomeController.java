@@ -19,9 +19,10 @@ public class HomeController {
     }
 
     @RequestMapping("getRate")
-   public String getRate(Model model, @RequestParam("startDate") String startDate){
+   public String getRate(Model model, @RequestParam("startDate") String startDate, @RequestParam("startTime") String startTime){
 
         model.addAttribute("startday", startDate);
+        model.addAttribute("startTime", startTime);
         return "results";
    }
 

@@ -11,6 +11,7 @@
     <title>Results</title>
 </head>
 <body>
-${startday}
+StartDate: ${startday}
+<p>StartTime: ${startTime}</p>
 </body>
 </html>
