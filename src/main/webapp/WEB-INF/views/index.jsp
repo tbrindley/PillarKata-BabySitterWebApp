@@ -20,7 +20,19 @@ ${message}
     </div>
     <div>
         <label>Start Time</label>
-        <input type="time" name="startTime" min="17:00">
+        <select name="startTime">
+            <option value="17">5:00 PM</option>
+            <option value="18">6:00 PM</option>
+            <option value="19">7:00 PM</option>
+            <option value="20">8:00 PM</option>
+            <option value="21">9:00 PM</option>
+            <option value="22">10:00 PM</option>
+            <option value="23">11:00 PM</option>
+            <option value="00">12:00 AM</option>
+            <option value="01">01:00 AM</option>
+            <option value="02">02:00 AM</option>
+            <option value="03">03:00 AM</option>
+        </select>
     </div>
     <div>
         <label>End Time</label>
