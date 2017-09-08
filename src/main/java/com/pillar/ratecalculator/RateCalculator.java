@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Travis Brindley on 9/7/2017.
@@ -29,5 +30,9 @@ public class RateCalculator {
         userDate = cal.getTime();
 
         return userDate;
+    }
+    public int timeStampDifference(Date startDate, Date endDate){
+        long diff = endDate.getTime() - startDate.getTime();
+        return (int) TimeUnit.HOURS.convert(diff,TimeUnit.MILLISECONDS);
     }
 }
