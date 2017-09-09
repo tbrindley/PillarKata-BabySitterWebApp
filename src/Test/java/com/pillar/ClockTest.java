@@ -97,4 +97,20 @@ public class ClockTest {
         int actual = testRate.calculateMidnightRate(midnightDate,endDate);
         assertEquals("Failed, Salary doesn't match!", expected, actual);
     }
+
+    //Calculate nightly salary for someone who worked past midnight
+    @Test
+    public void getNightSalaryTest1(){
+        RateCalculator testRate = new RateCalculator();
+        Date tempDate = testRate.convertToDate("Thu Sep 08 00:00:00 EDT 2017");
+
+        Date startDate = testRate.addHourToDateStamp(tempDate,17); //5pm start
+        Date bedTime = testRate.addHourToDateStamp(startDate,2);  //7pm bedtime
+        Date midnight = testRate.addHourToDateStamp(tempDate,24); //Sets midnight
+        Date endDate = testRate.addHourToDateStamp(startDate,8); //1am end Time
+
+        int expected = 80; //2hrs @ 12, 5 hrs @ $8, 1 hr @ 16;
+        int actual = testRate.calculateNightlyWage(startDate,bedTime,midnight,endDate);
+        assertEquals("Failed, Salary doesn't match!", expected, actual);
+    }
 }

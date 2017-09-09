@@ -23,6 +23,7 @@ public class RateCalculator {
         }
         return newDate;
     }
+
     public Date addHourToDateStamp(Date userDate, int hours){
         Calendar cal = new GregorianCalendar();
         cal.setTime(userDate);
@@ -31,6 +32,7 @@ public class RateCalculator {
 
         return userDate;
     }
+
     public int timeStampDifference(Date startDate, Date endDate){
         long diff = endDate.getTime() - startDate.getTime();
         return (int) TimeUnit.HOURS.convert(diff,TimeUnit.MILLISECONDS);
@@ -41,14 +43,23 @@ public class RateCalculator {
 
         return hoursWorked * 12;
     }
+
     public int calculatePostBedRate(Date bedtime, Date endDate){
         int postBedHours = timeStampDifference(bedtime,endDate);
 
         return postBedHours * 8;
     }
+
     public int calculateMidnightRate(Date midnight, Date endDate){
         int postMidnightHours = timeStampDifference(midnight,endDate);
 
         return postMidnightHours * 16;
+    }
+
+    public int calculateNightlyWage(Date startDate, Date bedtime, Date mightnight, Date endTime){
+        int baseSalary = calculateBaseRate(startDate,bedtime);
+        int postBedSalary = calculatePostBedRate(bedtime,mightnight);
+        int postMidnightSalary = calculateMidnightRate(mightnight,endTime);
+        return baseSalary + postBedSalary + postMidnightSalary;
     }
 }
