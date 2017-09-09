@@ -20,7 +20,7 @@ ${message}
     </div>
     <div>
         <label>Start Time</label>
-        <select name="startTime">
+        <select name="startTime" datatype="int">
             <option value="17">5:00 PM</option>
             <option value="18">6:00 PM</option>
             <option value="19">7:00 PM</option>
@@ -31,7 +31,7 @@ ${message}
     </div>
     <div>
         <label>Child's Bed Time</label>
-        <select name="bedTime">
+        <select name="bedTime" >
             <option value="18">6:00 PM</option>
             <option value="19">7:00 PM</option>
             <option value="20">8:00 PM</option>
@@ -42,7 +42,7 @@ ${message}
     </div>
     <div>
         <label>End Time</label>
-        <select name="endTime">
+        <select name="endTime" >
             <option value="19">Date1 - 7pm</option>
             <option value="20">Date1 - 8pm</option>
             <option value="21">Date1 - 9pm</option>

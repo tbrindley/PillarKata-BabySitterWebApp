@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 public class RateCalculator {
     public Date convertToDate(String inputdate){
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("EEE MMM dd hh:mm:ss z yyyy");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date newDate = null;
         try {
             newDate = dateFormat.parse(inputdate);

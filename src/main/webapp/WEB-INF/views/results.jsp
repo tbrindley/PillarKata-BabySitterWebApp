@@ -1,6 +1,6 @@
 <%--
   Created by IntelliJ IDEA.
-  User: travi
+  User: Travis Brindley
   Date: 9/7/2017
   Time: 1:59 PM
   To change this template use File | Settings | File Templates.
@@ -11,7 +11,9 @@
     <title>Results</title>
 </head>
 <body>
-StartDate: ${startday}
-<p>StartTime: ${startTime}</p>
+<p>Start Time: ${startDay} at ${startTime}</p>
+<p>Bed Time: ${bedTime}</p>
+<p>End Time: ${endDate}</p>
+<p>Nightly Wage: $${salary}.00</p>
 </body>
 </html>
