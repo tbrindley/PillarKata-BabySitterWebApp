@@ -60,15 +60,16 @@ public class RateCalculator {
         int postMidnightSalary = 0;
         int baseSalary = 0;
         int postBedSalary = 0;
-        if(startDate.before(bedtime)){ //only calculates higher "basepay" if child is awake at for 1 hour min.
+        if(startDate.before(bedtime) & endTime.after(bedtime)){ //only calculates higher "basepay" if child is awake at for 1 hour min.
             baseSalary = calculateBaseRate(startDate,bedtime);
-            System.out.println("baseSalary: " + baseSalary);
+        }
+        else if(startDate.before(bedtime) & endTime.before(bedtime)){
+            baseSalary = calculateBaseRate(startDate,endTime);
         }
 
         //determines if endtime is before or after midnight and pays out accordingly
         if(bedtime.before(endTime) & endTime.before(mightnight)){
             postBedSalary = calculatePostBedRate(bedtime,endTime);
-            System.out.println("PostBedSalary: " + postBedSalary);
         }
         else if(bedtime.before(endTime) & endTime.after(mightnight)){
             postBedSalary = calculatePostBedRate(bedtime,mightnight);
@@ -76,7 +77,6 @@ public class RateCalculator {
 
         if(endTime.after(mightnight)){
             postMidnightSalary = calculateMidnightRate(mightnight,endTime);
-            System.out.println("postMidnightSalary: " + postBedSalary);
         }
 
         return baseSalary + postBedSalary + postMidnightSalary;
