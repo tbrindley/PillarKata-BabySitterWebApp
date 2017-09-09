@@ -27,11 +27,6 @@ ${message}
             <option value="20">8:00 PM</option>
             <option value="21">9:00 PM</option>
             <option value="22">10:00 PM</option>
-            <option value="23">11:00 PM</option>
-            <option value="00">12:00 AM</option>
-            <option value="01">01:00 AM</option>
-            <option value="02">02:00 AM</option>
-            <option value="03">03:00 AM</option>
         </select>
     </div>
     <div>
@@ -48,16 +43,16 @@ ${message}
     <div>
         <label>End Time</label>
         <select name="endTime">
-            <option value="1">Date1 - 7pm</option>
-            <option value="2">Date1 - 8pm</option>
-            <option value="3">Date1 - 9pm</option>
-            <option value="4">Date1 - 10pm</option>
-            <option value="5">Date1 - 11pm</option>
-            <option value="6">Date2 - 12am</option>
-            <option value="7">Date2 - 01am</option>
-            <option value="8">Date2 - 02pm</option>
-            <option value="9">Date2 - 03pm</option>
-            <option value="10">Date2 - 04pm</option>
+            <option value="19">Date1 - 7pm</option>
+            <option value="20">Date1 - 8pm</option>
+            <option value="21">Date1 - 9pm</option>
+            <option value="22">Date1 - 10pm</option>
+            <option value="23">Date1 - 11pm</option>
+            <option value="24">Date2 - 12am</option>
+            <option value="25">Date2 - 01am</option>
+            <option value="26">Date2 - 02pm</option>
+            <option value="27">Date2 - 03pm</option>
+            <option value="28">Date2 - 04pm</option>
         </select>
     </div>
 

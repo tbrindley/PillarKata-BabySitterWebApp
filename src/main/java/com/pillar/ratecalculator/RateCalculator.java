@@ -57,9 +57,28 @@ public class RateCalculator {
     }
 
     public int calculateNightlyWage(Date startDate, Date bedtime, Date mightnight, Date endTime){
-        int baseSalary = calculateBaseRate(startDate,bedtime);
-        int postBedSalary = calculatePostBedRate(bedtime,mightnight);
-        int postMidnightSalary = calculateMidnightRate(mightnight,endTime);
+        int postMidnightSalary = 0;
+        int baseSalary = 0;
+        int postBedSalary = 0;
+        if(startDate.before(bedtime)){ //only calculates higher "basepay" if child is awake at for 1 hour min.
+            baseSalary = calculateBaseRate(startDate,bedtime);
+            System.out.println("baseSalary: " + baseSalary);
+        }
+
+        //determines if endtime is before or after midnight and pays out accordingly
+        if(bedtime.before(endTime) & endTime.before(mightnight)){
+            postBedSalary = calculatePostBedRate(bedtime,endTime);
+            System.out.println("PostBedSalary: " + postBedSalary);
+        }
+        else if(bedtime.before(endTime) & endTime.after(mightnight)){
+            postBedSalary = calculatePostBedRate(bedtime,mightnight);
+        }
+
+        if(endTime.after(mightnight)){
+            postMidnightSalary = calculateMidnightRate(mightnight,endTime);
+            System.out.println("postMidnightSalary: " + postBedSalary);
+        }
+
         return baseSalary + postBedSalary + postMidnightSalary;
     }
 }
