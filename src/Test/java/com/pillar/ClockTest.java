@@ -54,4 +54,19 @@ public class ClockTest {
         int actual = testRate.timeStampDifference(startDate,endDate);
         assertEquals("Failed, Time difference doesn't match!", expected, actual);
     }
+
+    //get base salary
+    @Test
+    public void getBaseSalaryTest(){
+        RateCalculator testRate = new RateCalculator();
+
+        Date tempDate = testRate.convertToDate("Thu Sep 08 00:00:00 EDT 2017");
+
+        Date startDate = testRate.addHourToDateStamp(tempDate,15);
+        Date endDate = testRate.addHourToDateStamp(startDate,5);
+
+        int expected = 60;
+        int actual = testRate.calculateRate(startDate,endDate);
+        assertEquals("Failed, Salary doesn't match!", expected, actual);
+    }
 }

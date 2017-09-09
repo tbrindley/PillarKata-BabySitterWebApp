@@ -35,6 +35,17 @@ ${message}
         </select>
     </div>
     <div>
+        <label>Child's Bed Time</label>
+        <select name="bedTime">
+            <option value="18">6:00 PM</option>
+            <option value="19">7:00 PM</option>
+            <option value="20">8:00 PM</option>
+            <option value="21">9:00 PM</option>
+            <option value="22">10:00 PM</option>
+            <option value="23">11:00 PM</option>
+        </select>
+    </div>
+    <div>
         <label>End Time</label>
         <select name="endTime">
             <option value="1">Date1 - 7pm</option>

@@ -35,4 +35,11 @@ public class RateCalculator {
         long diff = endDate.getTime() - startDate.getTime();
         return (int) TimeUnit.HOURS.convert(diff,TimeUnit.MILLISECONDS);
     }
+
+    public int calculateRate(Date startDate, Date endDate){
+        int hoursWorked = timeStampDifference(startDate,endDate);
+        int baseSalary = hoursWorked * 12;
+
+        return baseSalary;
+    }
 }
