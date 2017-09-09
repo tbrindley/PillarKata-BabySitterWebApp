@@ -41,10 +41,14 @@ public class RateCalculator {
 
         return hoursWorked * 12;
     }
-    public int calculatePostBedRate(Date bedtime, Date endtime){
-        int postBedHours = timeStampDifference(bedtime,endtime);
-
+    public int calculatePostBedRate(Date bedtime, Date endDate){
+        int postBedHours = timeStampDifference(bedtime,endDate);
 
         return postBedHours * 8;
+    }
+    public int calculateMidnightRate(Date midnight, Date endDate){
+        int postMidnightHours = timeStampDifference(midnight,endDate);
+
+        return postMidnightHours * 16;
     }
 }

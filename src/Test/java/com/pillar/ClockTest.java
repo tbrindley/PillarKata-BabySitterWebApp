@@ -85,4 +85,16 @@ public class ClockTest {
         int actual = testRate.calculatePostBedRate(bedTime,endDate);
         assertEquals("Failed, Salary doesn't match!", expected, actual);
     }
+    //Gets different rate from midnight to close;
+    @Test
+    public void getpostMidnightRateTest(){
+        RateCalculator testRate = new RateCalculator();
+
+        Date midnightDate = testRate.convertToDate("Thu Sep 08 00:00:00 EDT 2017");
+        Date endDate = testRate.addHourToDateStamp(midnightDate,2);
+
+        int expected = 32; //2 hours after bed @ $16hr = $40
+        int actual = testRate.calculateMidnightRate(midnightDate,endDate);
+        assertEquals("Failed, Salary doesn't match!", expected, actual);
+    }
 }
