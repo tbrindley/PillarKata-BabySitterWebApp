@@ -27,6 +27,7 @@ public class HomeController {
 
         RateCalculator testRate = new RateCalculator();
 
+        //Date methods
         Date tempDate = testRate.convertToDate(startString);
         Date startDate = testRate.addHourToDateStamp(tempDate, startTime);
         Date bedTime = testRate.addHourToDateStamp(tempDate, bedTimeInt);
@@ -37,10 +38,12 @@ public class HomeController {
         SimpleDateFormat bedFormat = new SimpleDateFormat("hh:mm a");
 
         //outputs
-        String startOutput = dateFormat.format(startDate);
-        String startTimeOutput = bedFormat.format(startDate);
-        String bedTimeOutput = bedFormat.format(bedTime);
-        String endOutput = dateFormat.format(endDate);
+        String startOutput = dateFormat.format(startDate); //start date
+        String startTimeOutput = bedFormat.format(startDate); //start time
+        String bedTimeOutput = bedFormat.format(bedTime); // bed time
+        String endOutput = dateFormat.format(endDate); // end date
+
+        int[] categorySalaries = testRate.returnCategoryTotals(startDate,bedTime,midnight,endDate);
         int salary = testRate.calculateNightlyWage(startDate, bedTime, midnight, endDate);
 
         //models
@@ -48,7 +51,10 @@ public class HomeController {
         model.addAttribute("startTime",startTimeOutput);
         model.addAttribute("bedTime", bedTimeOutput);
         model.addAttribute("endDate", endOutput);
-        model.addAttribute("salary", salary);
+        model.addAttribute("baseSalary",categorySalaries[0]);
+        model.addAttribute("postBedSalary",categorySalaries[1]);
+        model.addAttribute("midnightSalary",categorySalaries[2]);
+        model.addAttribute("totalSalary", salary);
 
         return "results";
     }

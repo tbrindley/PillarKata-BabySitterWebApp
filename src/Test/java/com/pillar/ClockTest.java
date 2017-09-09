@@ -3,6 +3,7 @@ package com.pillar;
 import com.pillar.ratecalculator.RateCalculator;
 import org.junit.Test;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -22,7 +23,7 @@ public class ClockTest {
 
         //convert dates to Strings to remove seconds from Date
         String expected = dateFormat.format(newDate);
-        String actual = dateFormat.format(testRate.convertToDate("Thu Sep 09 00:00:00 EDT 2017"));
+        String actual = dateFormat.format(testRate.convertToDate("2017-09-09"));
         assertEquals("Failed, Timestamps don't match!", expected, actual);
     }
 
@@ -31,7 +32,7 @@ public class ClockTest {
     public void addHoursToTimeStampTest(){
         RateCalculator testRate = new RateCalculator();
 
-        Date tempDate = testRate.convertToDate("Thu Sep 08 00:00:00 EDT 2017");
+        Date tempDate = testRate.convertToDate("2017-09-09");
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH");
 
         //convert dates to Strings to remove seconds from Date
@@ -45,7 +46,7 @@ public class ClockTest {
     public void getDifferenceBetweenStartTimeStampAndEndTimeStamp(){
         RateCalculator testRate = new RateCalculator();
 
-        Date tempDate = testRate.convertToDate("Thu Sep 08 00:00:00 EDT 2017");
+        Date tempDate = testRate.convertToDate("2017-09-09");
 
         Date startDate = testRate.addHourToDateStamp(tempDate,15);
         Date endDate = testRate.addHourToDateStamp(startDate,4);
@@ -60,7 +61,7 @@ public class ClockTest {
     public void getBaseSalaryTest(){
         RateCalculator testRate = new RateCalculator();
 
-        Date tempDate = testRate.convertToDate("Thu Sep 08 00:00:00 EDT 2017");
+        Date tempDate = testRate.convertToDate("2017-09-09");
 
         Date startDate = testRate.addHourToDateStamp(tempDate,15);
         Date endDate = testRate.addHourToDateStamp(startDate,5);
@@ -75,7 +76,7 @@ public class ClockTest {
     public void getPostBedTimeSalaryTest(){
         RateCalculator testRate = new RateCalculator();
 
-        Date tempDate = testRate.convertToDate("Thu Sep 08 00:00:00 EDT 2017");
+        Date tempDate = testRate.convertToDate("2017-09-09");
 
         Date startDate = testRate.addHourToDateStamp(tempDate,15);
         Date bedTime = testRate.addHourToDateStamp(startDate,4);
@@ -90,7 +91,7 @@ public class ClockTest {
     public void getpostMidnightRateTest(){
         RateCalculator testRate = new RateCalculator();
 
-        Date midnightDate = testRate.convertToDate("Thu Sep 08 00:00:00 EDT 2017");
+        Date midnightDate = testRate.convertToDate("2017-09-09");
         Date endDate = testRate.addHourToDateStamp(midnightDate,2);
 
         int expected = 32; //2 hours after bed @ $16hr = $40
@@ -102,7 +103,7 @@ public class ClockTest {
     @Test
     public void getNightSalaryTest1(){
         RateCalculator testRate = new RateCalculator();
-        Date tempDate = testRate.convertToDate("Thu Sep 08 00:00:00 EDT 2017");
+        Date tempDate = testRate.convertToDate("2017-09-09");
 
         Date startDate = testRate.addHourToDateStamp(tempDate,17); //5pm start
         Date bedTime = testRate.addHourToDateStamp(startDate,2);  //7pm bedtime
@@ -117,7 +118,7 @@ public class ClockTest {
     @Test
     public void getNightSalaryTest2(){
         RateCalculator testRate = new RateCalculator();
-        Date tempDate = testRate.convertToDate("Thu Sep 08 00:00:00 EDT 2017");
+        Date tempDate = testRate.convertToDate("2017-09-09");
 
         Date startDate = testRate.addHourToDateStamp(tempDate,17); //5pm start
         Date bedTime = testRate.addHourToDateStamp(startDate,2);  //7pm bedtime
@@ -132,7 +133,7 @@ public class ClockTest {
     @Test
     public void getNightSalaryTest3(){
         RateCalculator testRate = new RateCalculator();
-        Date tempDate = testRate.convertToDate("Thu Sep 08 00:00:00 EDT 2017");
+        Date tempDate = testRate.convertToDate("2017-09-09");
 
         Date startDate = testRate.addHourToDateStamp(tempDate,17); //5pm start
         Date bedTime = testRate.addHourToDateStamp(startDate,2);  //7pm bedtime
@@ -142,5 +143,21 @@ public class ClockTest {
         int expected = 12; //1hrs @ 12;
         int actual = testRate.calculateNightlyWage(startDate,bedTime,midnight,endDate);
         assertEquals("Failed, Salary doesn't match!", expected, actual);
+    }
+    //returns arraylist of category values;
+    @Test
+    public void getCategoryValuesTest(){
+        RateCalculator testRate = new RateCalculator();
+        Date tempDate = testRate.convertToDate("2017-09-09");
+
+        Date startDate = testRate.addHourToDateStamp(tempDate,17); //5pm start
+        Date bedTime = testRate.addHourToDateStamp(startDate,2);  //7pm bedtime
+        Date midnight = testRate.addHourToDateStamp(tempDate,24); //Sets midnight
+        Date endDate = testRate.addHourToDateStamp(midnight,1); //1am end Time
+
+        int[] testArray = {24,40,16};//2hrs @ $12, 5hrs @ $8, 1hr @ $16;
+        String expected = Arrays.toString(testArray);
+        String actual = Arrays.toString(testRate.returnCategoryTotals(startDate,bedTime,midnight,endDate));
+        assertEquals("Failed, Arrays don't match!", expected, actual);
     }
 }

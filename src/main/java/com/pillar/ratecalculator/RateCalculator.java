@@ -56,7 +56,7 @@ public class RateCalculator {
         return postMidnightHours * 16;
     }
 
-    public int calculateNightlyWage(Date startDate, Date bedtime, Date mightnight, Date endTime){
+    public int calculateNightlyWage(Date startDate, Date bedtime, Date midnight, Date endTime){
         int postMidnightSalary = 0;
         int baseSalary = 0;
         int postBedSalary = 0;
@@ -68,17 +68,42 @@ public class RateCalculator {
         }
 
         //determines if endtime is before or after midnight and pays out accordingly
-        if(bedtime.before(endTime) & endTime.before(mightnight)){
+        if(bedtime.before(endTime) & endTime.before(midnight)){
             postBedSalary = calculatePostBedRate(bedtime,endTime);
         }
-        else if(bedtime.before(endTime) & endTime.after(mightnight)){
-            postBedSalary = calculatePostBedRate(bedtime,mightnight);
+        else if(bedtime.before(endTime) & endTime.after(midnight)){
+            postBedSalary = calculatePostBedRate(bedtime,midnight);
         }
 
-        if(endTime.after(mightnight)){
-            postMidnightSalary = calculateMidnightRate(mightnight,endTime);
+        if(endTime.after(midnight)){
+            postMidnightSalary = calculateMidnightRate(midnight,endTime);
         }
 
         return baseSalary + postBedSalary + postMidnightSalary;
+    }
+
+    public int[] returnCategoryTotals(Date startDate, Date bedtime, Date midnight, Date endTime){
+        int[] intArray = {0,0,0};
+
+        if(startDate.before(bedtime) & endTime.after(bedtime)){ //only calculates higher "basepay" if child is awake at for 1 hour min.
+            intArray[0] = calculateBaseRate(startDate,bedtime);
+        }
+        else if(startDate.before(bedtime) & endTime.before(bedtime)){
+            intArray[0] = calculateBaseRate(startDate,endTime);
+        }
+
+        //determines if endtime is before or after midnight and pays out accordingly
+        if(bedtime.before(endTime) & endTime.before(midnight)){
+            intArray[1] = calculatePostBedRate(bedtime,endTime);
+        }
+        else if(bedtime.before(endTime) & endTime.after(midnight)){
+            intArray[1] = calculatePostBedRate(bedtime,midnight);
+        }
+
+        if(endTime.after(midnight)){
+            intArray[2] = calculateMidnightRate(midnight,endTime);
+        }
+
+        return intArray;
     }
 }

@@ -14,6 +14,10 @@
 <p>Start Time: ${startDay} at ${startTime}</p>
 <p>Bed Time: ${bedTime}</p>
 <p>End Time: ${endDate}</p>
-<p>Nightly Wage: $${salary}.00</p>
+<hr>
+<p>Base Salary Earned ($12 per hr): $${baseSalary}.00</p>
+<p>Post Bedtime Salary Earned ($8 per hr): $${postBedSalary}.00</p>
+<p>After Midnight Salary Earned ($16 per hr): $${midnightSalary}.00</p>
+<p>Nightly Wage: $${totalSalary}.00</p>
 </body>
 </html>
