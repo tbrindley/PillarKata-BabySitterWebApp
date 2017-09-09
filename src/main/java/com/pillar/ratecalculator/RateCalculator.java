@@ -36,10 +36,15 @@ public class RateCalculator {
         return (int) TimeUnit.HOURS.convert(diff,TimeUnit.MILLISECONDS);
     }
 
-    public int calculateRate(Date startDate, Date endDate){
+    public int calculateBaseRate(Date startDate, Date endDate){
         int hoursWorked = timeStampDifference(startDate,endDate);
-        int baseSalary = hoursWorked * 12;
 
-        return baseSalary;
+        return hoursWorked * 12;
+    }
+    public int calculatePostBedRate(Date bedtime, Date endtime){
+        int postBedHours = timeStampDifference(bedtime,endtime);
+
+
+        return postBedHours * 8;
     }
 }

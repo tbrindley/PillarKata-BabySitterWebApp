@@ -66,7 +66,23 @@ public class ClockTest {
         Date endDate = testRate.addHourToDateStamp(startDate,5);
 
         int expected = 60;
-        int actual = testRate.calculateRate(startDate,endDate);
+        int actual = testRate.calculateBaseRate(startDate,endDate);
+        assertEquals("Failed, Salary doesn't match!", expected, actual);
+    }
+
+    //get different pay rates from bedtime to midnight
+    @Test
+    public void getPostBedTimeSalaryTest(){
+        RateCalculator testRate = new RateCalculator();
+
+        Date tempDate = testRate.convertToDate("Thu Sep 08 00:00:00 EDT 2017");
+
+        Date startDate = testRate.addHourToDateStamp(tempDate,15);
+        Date bedTime = testRate.addHourToDateStamp(startDate,4);
+        Date endDate = testRate.addHourToDateStamp(startDate,9);
+
+        int expected = 40; //5 hours after bed @ $8hr = $40
+        int actual = testRate.calculatePostBedRate(bedTime,endDate);
         assertEquals("Failed, Salary doesn't match!", expected, actual);
     }
 }
