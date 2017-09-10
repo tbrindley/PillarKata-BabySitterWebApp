@@ -35,7 +35,7 @@
     <h3>Babysitting Info</h3>
     <p><strong>Start Time:</strong> ${startDay} at ${startTime}</p>
     <p><strong>Bed Time:</strong> ${bedTime}</p>
-    <p><strong>End Time:</strong> ${endDate}</p>
+    <p><strong>End Time:</strong> ${endDate} at ${endTime}</p>
     <hr>
     <h3>Wage Breakdown</h3>
     <p><strong>Base Salary Earned ($12 per hr):</strong>$${baseSalary}.00</p>
@@ -44,6 +44,7 @@
     <hr>
     <h2 align="center">Nightly Wage: $${totalSalary}.00</h2>
 </div>
+
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->

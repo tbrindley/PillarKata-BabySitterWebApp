@@ -35,14 +35,15 @@
         <h4 align="center">Base Salary: $12hr | After Bedtime Salary: $8hr | After Midnight Salary: $16hr</h4>
     </div>
 
-    <form name="timeclock" action="getRate" onsubmit="" method="post">
+    <form name="timeclock" action="getRate"  method="post">
         <div class="container">
             <label>Start Date</label>
-            <input type="date" name="startDate" class="form-control" required>
+            <input type="date" name="startDate" id="startDate" class="form-control" onchange="getDate()" required>
         </div>
         <div class="container">
             <br><label>Start Time</label>
-            <select name="startTime" datatype="int" class="form-control" required>
+            <select name="startTime" id="startTime" class="form-control" onchange="getQuitTime()" required>
+                <option disabled selected value> Select a start time</option>
                 <option value="17">5:00 PM</option>
                 <option value="18">6:00 PM</option>
                 <option value="19">7:00 PM</option>
@@ -52,8 +53,9 @@
             </select>
         </div>
         <div class="container">
-            <br><label>Child's Bed Time</label>
-            <select name="bedTime" class="form-control" required>
+            <br><label>Child's Typical Bed Time</label>
+            <select name="bedTime" id="bedTime" class="form-control" required>
+                <option disabled selected value> Select bed time</option>
                 <option value="18">6:00 PM</option>
                 <option value="19">7:00 PM</option>
                 <option value="20">8:00 PM</option>
@@ -65,12 +67,14 @@
         <div class="container">
             <br><label>End Time</label>
             <select name="endTime" class="form-control" required>
+                <option disabled selected value> Select end time</option>
+                <option value="18">Date1 - 6pm</option>
                 <option value="19">Date1 - 7pm</option>
                 <option value="20">Date1 - 8pm</option>
                 <option value="21">Date1 - 9pm</option>
                 <option value="22">Date1 - 10pm</option>
                 <option value="23">Date1 - 11pm</option>
-                <option value="24">Date2 - 12am</option>
+                <option value="24">Date1 - 12am</option>
                 <option value="25">Date2 - 01am</option>
                 <option value="26">Date2 - 02am</option>
                 <option value="27">Date2 - 03am</option>
@@ -83,6 +87,7 @@
         </div>
     </form>
 </div>
+<script src="../../webresources/js/formValidation.js"> </script>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->

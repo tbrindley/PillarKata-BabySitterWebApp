@@ -66,12 +66,18 @@ public class RateCalculator {
         else if(startDate.before(bedtime) & endTime.before(bedtime)){
             baseSalary = calculateBaseRate(startDate,endTime);
         }
+        else if (startDate.before(bedtime) & endTime.equals(bedtime)) {
+            baseSalary = calculateBaseRate(startDate,endTime);
+        }
 
         //determines if endtime is before or after midnight and pays out accordingly
         if(bedtime.before(endTime) & endTime.before(midnight)){
             postBedSalary = calculatePostBedRate(bedtime,endTime);
         }
         else if(bedtime.before(endTime) & endTime.after(midnight)){
+            postBedSalary = calculatePostBedRate(bedtime,midnight);
+        }
+        else if(bedtime.before(endTime) & endTime.equals(midnight)){
             postBedSalary = calculatePostBedRate(bedtime,midnight);
         }
 
@@ -91,6 +97,9 @@ public class RateCalculator {
         else if(startDate.before(bedtime) & endTime.before(bedtime)){
             intArray[0] = calculateBaseRate(startDate,endTime);
         }
+        else if(startDate.before(bedtime) & endTime.equals(bedtime)){
+            intArray[0] = calculateBaseRate(startDate,endTime);
+        }
 
         //determines if endtime is before or after midnight and pays out accordingly
         if(bedtime.before(endTime) & endTime.before(midnight)){
@@ -98,6 +107,9 @@ public class RateCalculator {
         }
         else if(bedtime.before(endTime) & endTime.after(midnight)){
             intArray[1] = calculatePostBedRate(bedtime,midnight);
+        }
+        else if(bedtime.before(endTime) & endTime.equals(midnight)){
+            intArray[1] = calculatePostBedRate(bedtime,endTime);
         }
 
         if(endTime.after(midnight)){

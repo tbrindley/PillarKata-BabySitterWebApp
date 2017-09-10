@@ -42,6 +42,7 @@ public class HomeController {
         String startTimeOutput = bedFormat.format(startDate); //start time
         String bedTimeOutput = bedFormat.format(bedTime); // bed time
         String endOutput = dateFormat.format(endDate); // end date
+        String endTimeOutput = bedFormat.format(endDate); //end time
 
         int[] categorySalaries = testRate.returnCategoryTotals(startDate,bedTime,midnight,endDate);
         int salary = testRate.calculateNightlyWage(startDate, bedTime, midnight, endDate);
@@ -51,6 +52,7 @@ public class HomeController {
         model.addAttribute("startTime",startTimeOutput);
         model.addAttribute("bedTime", bedTimeOutput);
         model.addAttribute("endDate", endOutput);
+        model.addAttribute("endTime",endTimeOutput);
         model.addAttribute("baseSalary",categorySalaries[0]);
         model.addAttribute("postBedSalary",categorySalaries[1]);
         model.addAttribute("midnightSalary",categorySalaries[2]);
