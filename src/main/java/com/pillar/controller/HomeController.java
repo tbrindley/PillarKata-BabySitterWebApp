@@ -33,6 +33,7 @@ public class HomeController {
         Date bedTime = testRate.addHourToDateStamp(tempDate, bedTimeInt);
         Date midnight = testRate.addHourToDateStamp(tempDate, 24);
         Date endDate = testRate.addHourToDateStamp(tempDate, endTime);
+
         //output formats
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
         SimpleDateFormat bedFormat = new SimpleDateFormat("hh:mm a");

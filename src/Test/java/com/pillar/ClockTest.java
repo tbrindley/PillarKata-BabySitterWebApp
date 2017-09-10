@@ -5,7 +5,6 @@ import org.junit.Test;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
-import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertEquals;
 
@@ -22,7 +21,7 @@ public class ClockTest {
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 
         //convert dates to Strings to remove seconds from Date
-        String expected = dateFormat.format(newDate);
+        String expected = "09/09/2017";
         String actual = dateFormat.format(testRate.convertToDate("2017-09-09"));
         assertEquals("Failed, Timestamps don't match!", expected, actual);
     }
@@ -36,7 +35,7 @@ public class ClockTest {
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH");
 
         //convert dates to Strings to remove seconds from Date
-        String expected = "09/08/2017 15";
+        String expected = "09/09/2017 15";
         String actual = dateFormat.format(testRate.addHourToDateStamp(tempDate,15));
         assertEquals("Failed, Timestamps don't match!", expected, actual);
     }
