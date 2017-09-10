@@ -11,7 +11,7 @@ There are a few dependencies needed to run this application.  All dependencies a
 
 All dependencies are available in the include pom.xml file.
 
-##Building
+##Building and Running
 *  Clone this project from the github repository [github.com/tbrindley/PillarKata-BabySitterWebApp.git](https://github.com/tbrindley/PillarKata-BabySitterWebApp.git)
 *  Ensure all dependencies have been added to your package.  Once again, these can be viewed in the pom.xml file
     * Don't forget to reimport from Maven after adding the dependencies.
