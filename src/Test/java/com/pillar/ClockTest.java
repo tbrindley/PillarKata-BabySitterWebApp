@@ -17,7 +17,6 @@ public class ClockTest {
     public void timeStampCreationTest() throws Exception {
 
         RateCalculator testRate = new RateCalculator(); //Create test instance for rateCalculator object
-        Date newDate = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 
         //convert dates to Strings to remove seconds from Date
