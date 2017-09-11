@@ -24,4 +24,7 @@
         <param-name>contextConfigLocation</param-name>
         <param-value>WEB-INF/spring-servlet.xml</param-value>
     </context-param>
+    <error-page>
+        <location>/WEB-INF/views/index.jsp</location>
+    </error-page>
 </web-app>
