@@ -30,6 +30,7 @@ public class ClockTest {
     public void addHoursToTimeStampTest(){
         RateCalculator testRate = new RateCalculator();
 
+
         Date tempDate = testRate.convertToDate("2017-09-09");
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH");
 

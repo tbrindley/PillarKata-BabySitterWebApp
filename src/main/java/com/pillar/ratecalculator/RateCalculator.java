@@ -11,12 +11,12 @@ import java.util.concurrent.TimeUnit;
  * Created by Travis Brindley on 9/7/2017.
  */
 public class RateCalculator {
-    public Date convertToDate(String inputdate){
+    public Date convertToDate(String inputDate){
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date newDate = null;
         try {
-            newDate = dateFormat.parse(inputdate);
+            newDate = dateFormat.parse(inputDate);
             return newDate;
         } catch (ParseException e) {
             e.printStackTrace();
